@@ -17,11 +17,10 @@ jobs:
           key: cache-287d85b
 
       - name: prime-cache-287d85b
-        run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
+        run: echo "Cache hit:${{ steps.cache.outputs.cache-hit }}"
 
       - name: Install dependencies
         run: npm install
 
       - name: Build
-        run: npm run build
         run: npm run build
