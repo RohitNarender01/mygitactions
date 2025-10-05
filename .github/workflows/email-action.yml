@@ -1,0 +1,16 @@
+name: Email Step Action
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: rohit.narender@straive.com
+        run: echo "Hello, world!"
