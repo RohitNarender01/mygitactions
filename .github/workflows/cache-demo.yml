@@ -1,32 +1,27 @@
-name: Cache Demo
+name: CI Cache Demo
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: prime-cache-287d85b
-        id: cache-step
+      - name: Cache node_modules
+        id: cache
         uses: actions/cache@v4
         with:
-          path: |
-            node_modules
+          path: node_modules
           key: cache-287d85b
 
-      - name: Echo cache hit/miss
-        run: |
-          echo "Cache hit: ${{ steps.cache-step.outputs.cache-hit }}"
+      - name: prime-cache-287d85b
+        run: echo "Cache hit: ${{ steps.cache.outputs.cache-hit }}"
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run build (example)
+      - name: Build
+        run: npm run build
         run: npm run build
